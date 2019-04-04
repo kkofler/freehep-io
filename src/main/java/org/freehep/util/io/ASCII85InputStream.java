@@ -1,4 +1,6 @@
 // Copyright 2001-2009, FreeHEP.
+// Copyright 2019 DAGOPT Optimization Technologies GmbH, ALL RIGHTS RESERVED.
+// License: http://freehep.github.io/freehep-psviewer/license.html
 package org.freehep.util.io;
 
 import java.io.FileInputStream;
@@ -129,9 +131,8 @@ public class ASCII85InputStream extends DecodingInputStream implements ASCII85 {
 			for (int i = 0; i < c.length; i++) {
 				if (i >= cIndex) {
 					c[i] = 'u';
-				} else {
-					c[i] -= '!';
 				}
+				c[i] -= '!';
 			}
 
 			// convert
