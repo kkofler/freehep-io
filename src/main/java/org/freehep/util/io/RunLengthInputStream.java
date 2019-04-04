@@ -1,4 +1,6 @@
 // Copyright 2001-2009, FreeHEP.
+// Copyright 2019 DAGOPT Optimization Technologies GmbH, ALL RIGHTS RESERVED.
+// License: http://freehep.github.io/freehep-psviewer/license.html
 package org.freehep.util.io;
 
 import java.io.IOException;
@@ -61,7 +63,7 @@ public class RunLengthInputStream extends DecodingInputStream implements
 			count++;
 			for (int i = 0; i < count; i++) {
 				buffer[i] = in.read();
-				if (end(buffer[i])) {
+				if (buffer[i] < 0) {
 					return false;
 				}
 			}
@@ -69,7 +71,7 @@ public class RunLengthInputStream extends DecodingInputStream implements
 			// counted
 			count = 257 - count;
 			int b = in.read();
-			if (end(b)) {
+			if (b < 0) {
 				return false;
 			}
 
