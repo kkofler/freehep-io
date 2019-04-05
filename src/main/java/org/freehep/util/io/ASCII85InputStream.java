@@ -104,6 +104,12 @@ public class ASCII85InputStream extends DecodingInputStream implements ASCII85 {
 									+ ch);
 				}
 				endReached = true;
+				if (in instanceof DecodingInputStream) {
+					// make sure we consume all input
+					do {
+						ch = in.read();
+					} while (ch >= 0);
+				}
 				break;
 			case '\r':
 				lineNo++;

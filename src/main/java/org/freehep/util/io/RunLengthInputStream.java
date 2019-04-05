@@ -55,6 +55,12 @@ public class RunLengthInputStream extends DecodingInputStream implements
 		count = in.read();
 
 		if (end(count)) {
+			if (in instanceof DecodingInputStream) {
+				// make sure we consume all input
+				while (count >= 0) {
+					count = in.read();
+				}
+			}
 			return false;
 		}
 
